@@ -1,0 +1,13 @@
+{
+    "name": "rubyqorn/image-compressor",
+    "description": "Library for image compression",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anton Hideger",
+            "email": "antonhideger1337@gmail.com"
+        }
+    ],
+    "require": {}
+}
