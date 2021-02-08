@@ -3,23 +3,33 @@
 namespace Qonsillium\Imagick;
 
 use Imagick;
+use Qonsillium\File;
 
 class AbstractImagick extends Imagick
 {
     /**
-     * Files list or single file name
-     * @var string|array 
+     * @var \Qonsillium\File
      */ 
-    protected $files;
+    protected File $file;
 
     /**
      * Iniitiates AbstractImagick class and
      * sets files which have to be handled
-     * @param string|array $files
+     * @param \Qonsillium\File $file
      * @return void 
      */ 
-    public function __construct($files)
+    public function __construct(File $file)
     {
-        $this->files = $files;
+        $this->file = $file;
+    }
+
+    /**
+     * Destroys AbstractImagick object
+     * @return void 
+     */ 
+    public function __destruct()
+    {
+        unset($this->file);
+        $this->destroy();
     }
 }

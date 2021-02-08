@@ -2,8 +2,6 @@
 
 namespace Qonsillium\Contracts;
 
-use Qonsillium\Imagick\AbstractImagick;
-
 interface MimeContract
 {
     /**
@@ -18,19 +16,6 @@ interface MimeContract
      * @return string 
      */ 
     public function getFilePath(): string; 
-
-    /**
-     * Sets Imagick helper class
-     * @param \Qonsillium\Imagick\AbstractImagick
-     * @return void 
-     */ 
-    public function setImagickHelper(AbstractImagick $imagick);
-
-    /**
-     * Returns Imagick helper class 
-     * @return \Qonsillium\Imagick\AbstractImagick
-     */ 
-    public function getImagickHelper(): AbstractImagick;
 
     /**
      * Validates file path for existence and
