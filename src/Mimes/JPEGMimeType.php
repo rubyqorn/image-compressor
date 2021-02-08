@@ -2,18 +2,10 @@
 
 namespace Qonsillium\Mimes;
 
-use Qonsillium\Contracts\MimeContract;
-use Qonsillium\Imagick\AbstractImagick;
+use Qonsillium\File;
 
-class JPEGMimeType implements MimeContract
+class JPEGMimeType extends File
 {
-    /**
-     * Mime type which have to be
-     * handled by this class
-     * @var string 
-     */ 
-    private const MIME_TYPE = 'jpeg';
-
     /**
      * Absolute file path
      * @var string 
@@ -21,10 +13,13 @@ class JPEGMimeType implements MimeContract
     private string $filePath;
 
     /**
-     * Imagick helper
-     * @var \Qonsillium\Imagick\AbstractImagick 
+     * Initiate JPEGMimeType constructor method
+     * and sets jpeg format file for validation 
      */ 
-    private AbstractImagick $imagick;
+    public function __construct()
+    {
+        static::$mimeType = 'jpeg';
+    }
 
     /**
      * {@inheritdoc} 
@@ -40,37 +35,5 @@ class JPEGMimeType implements MimeContract
     public function getFilePath(): string
     {
         return $this->filePath;
-    }
-
-    /**
-     * {@inheritdoc} 
-     */ 
-    public function setImagickHelper(AbstractImagick $imagick)
-    {
-        $this->imagick = $imagick;
-    }
-
-    /**
-     * {@inheritdoc} 
-     */ 
-    public function getImagickHelper(): AbstractImagick
-    {
-        return $this->imagick;
-    }
-
-    /**
-     * {@inheritdoc} 
-     */
-    public function validateFilePathExistence(): bool
-    {
-        return file_exists($this->getFilePath()) ? true : false;
-    }
-
-    /**
-     * {@inheritdoc} 
-     */ 
-    public function validateMimeType(): bool
-    {
-        return in_array(self::MIME_TYPE, explode('.', $this->getFilePath())) ? true : false;
     }
 }
