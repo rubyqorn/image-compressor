@@ -57,7 +57,7 @@ class ImagickWrapper extends AbstractImagick
      */ 
     public function setCompressionImage()
     {
-        return $this->getImagick()->setCompressionImage($this->getFileCompression());
+        return $this->getImagick()->setImageCompression($this->getFileCompression());
     }
 
     /**
@@ -90,5 +90,13 @@ class ImagickWrapper extends AbstractImagick
     public function writeImage()
     {
         return $this->getImagick()->writeImage($this->getUploadFolder());
+    }
+
+    /**
+     * {@inheritdoc}
+     */ 
+    public function destroy()
+    {
+        return $this->getImagick()->destroy();
     }
 }
