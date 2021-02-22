@@ -28,4 +28,14 @@ abstract class File implements MimeContract
     {
         return in_array(static::$mimeType, explode('.', $this->getFilePath())) ? true : false;
     }
+
+    /**
+     * Returns file name from full path
+     * @return string 
+     */ 
+    public function getFileName()
+    {
+        $parsed = explode('/', $this->getFilePath());
+        return array_pop($parsed);
+    }
 }

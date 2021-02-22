@@ -52,7 +52,6 @@ abstract class AbstractImagick
     public function __destruct()
     {
         unset($this->file);
-        $this->destroy();
     }
 
     /**
@@ -90,4 +89,10 @@ abstract class AbstractImagick
      * @return bool 
      */
     abstract public function writeImage();
+
+    /**
+     * Destroys ImageMagick instance
+     * @return bool 
+     */ 
+    abstract public function destroy();
 }
